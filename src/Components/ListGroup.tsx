@@ -1,14 +1,24 @@
 function ListGroup() {
   const items = ["New York", "San Francisco", "Baltic", "Scandanavia"];
+  function GetMessageFx() {
+    return items.length === 0 ? <p>No Items Found</p> : null;
+  }
   return (
     <>
       <h1>List</h1>
+      {GetMessageFx()}
       <ul className="list-group">
-        <li className="list-group-item">An item</li>
-        <li className="list-group-item">A second item</li>
-        <li className="list-group-item">A third item</li>
-        <li className="list-group-item">A fourth item</li>
-        <li className="list-group-item">And a fifth one</li>
+        {items.map((item, index) => (
+          <li
+            className="list-group-item"
+            key={item}
+            onClick={(e) => {
+              console.log(item, index, e);
+            }}
+          >
+            {item}
+          </li>
+        ))}
       </ul>
     </>
   );
